@@ -1,7 +1,10 @@
 package com.potatoProduction.webApp;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.potatoProduction.webApp.Entities.Employee;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class WebAppController {
@@ -11,4 +14,12 @@ public class WebAppController {
         return "yo koala";
     }
 
+    @RequestMapping(method = RequestMethod.GET, value ="/{id}")
+    String getUserById (@PathVariable("id") int id){
+        return "abc" + id;
+    }
+    @RequestMapping(method = RequestMethod.PUT, value ="/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    String putUserById (@RequestBody Employee employee , HttpServletResponse response){
+        return "abc";
+    }
 }
